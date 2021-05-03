@@ -1,0 +1,1 @@
+This is a script for checking vaccin appointment by providing pin code.
