@@ -103,9 +103,15 @@ def getSessionDetails(center_id: str, date: str, centers_df: DataFrame):
 
 if __name__ == "__main__":
 
+<<<<<<< HEAD
     # pincode = 392015
     date = "08-05-2021"
     # centers = calenderByPincode(pincode, date)
+=======
+    pincode = 392015
+    date = "08-05-2021"
+    centers = calenderByPincode(pincode, date)
+>>>>>>> 5cd41b65c0921771679be10951224923ece7338a
 
     district = "Bharuch"
     centers = calenderByDistrict(district, date)
@@ -113,7 +119,11 @@ if __name__ == "__main__":
     centers_df = pd.DataFrame(centers)
 
     # Can select any center_id here (filter on available columns of centers_df)
+<<<<<<< HEAD
     center_id = centers_df["center_id"][3]
+=======
+    center_id = centers_df["center_id"][0]
+>>>>>>> 5cd41b65c0921771679be10951224923ece7338a
 
     session_details = getSessionDetails(center_id, date, centers_df)
 
