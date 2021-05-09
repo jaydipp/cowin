@@ -18,19 +18,16 @@ def get_states():
 
 def get_all_districts():
     districts_df = pd.DataFrame()
-    disc_series = pd.Series()
+    districts_dict = {}
     for i in range(1,37):
         response = requests.get("https://cdn-api.co-vin.in/api/v2/admin/location/districts/{}".format(i), headers = headers)
         text = json.loads(response.text)['districts']
         df = pd.DataFrame(text)
         districts_df = districts_df.append(df, ignore_index=True)
-        s = pd.Series(list(itertools.repeat(i, df.shape[0])))
-        disc_series = disc_series.append(s, ignore_index = True)
-        
-    districts_df['state_id'] = disc_series
-    # districts_df.set_index('district_name', inplace = True)
-        
-    return districts_df
+        for i in range(districts_df.shape[0]):
+            districts_dict[districts_df['district_name'][i]] = districts_df['district_id'][i]
+            
+    return districts_dict
 
 def get_district(state_name):
     state_dict  = get_states()
@@ -39,3 +36,5 @@ def get_district(state_name):
     df = pd.DataFrame(text)
     
     return df
+
+print(get_all_districts())
